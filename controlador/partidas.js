@@ -82,22 +82,24 @@ $(document).ready(function() {
         });
     })
 
-    function muestraPartidas() {
+    function muestraPartidas(orden) {
         $.ajax({
-            url: 'modelo/damePartidas.php',
+            url: '../modelo/damePartidas.php?orden=' + orden + '&dir=' + dir,
             type: 'GET',
             dataType: 'json',
             success: function(datos) {
                 console.log(datos);
-                var partidas = '<table id="tablaPartidas" border=1 class="table table-stripped"><tr><th>ID</th><th id="usuario">USUARIO</th><th id="puntuacion">PUNTUACION</th><th id="fecha">FECHA</th><th id="acciones">ACCIONES</th></tr>'
+                var partidas = '<table class="table table-striped" id="tablaPartidas" border=1 class="table table-stripped"><tr><th>ID</th><th id="usuario">USUARIO</th><th id="puntuacion">PUNTUACION</th><th id="fecha">FECHA</th><th id="acciones">ACCIONES</th></tr>'
                 $.each(datos, function(i, elemento) {
-                    partidas = partidas + '<tr><td>' + elemento.id +
-                        '</td><td>' + elemento.palabra +
-                        '</td><td>' + elemento.categoria +
-                        '</td><td><button class="borrar">Borrar</button>  <button class="modificar">Modificar</button></td></tr>'
+                    partidas = partidas +
+                        '<tr><td>' + elemento.id +
+                        '</td><td>' + elemento.usuario +
+                        '</td><td>' + elemento.puntuacion +
+                        '</td><td>' + elemento.fecha +
+                        '</td><td><button class="btn btn-danger" class="borrar">Borrar</button>  <button class="btn btn-warning" class="modificar">Modificar</button></td></>'
                 });
                 partidas = partidas + '</table>';
-                $('#tablaPalabras').html(partidas);
+                $('#contenido').html(partidas);
             },
             error: function(xhr, status) {
                 alert('Disculpe, existió un problema');

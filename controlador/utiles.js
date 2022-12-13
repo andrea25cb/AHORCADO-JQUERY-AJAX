@@ -1,42 +1,5 @@
 $(document).ready(function() {
 
-    //tabla de palabras
-    $('#cargarPalabras').click(function() {
-        muestraPalabras();
-    })
-
-    function muestraPalabras() {
-        $.ajax({
-            url: '../modelo/damePalabras.php',
-            type: 'GET',
-            dataType: 'json',
-            success: function(datos) {
-                console.log(datos);
-                var palabras = '<table id="tablaPalabras" border=1 class="table table-stripped"><tr><th>ID</th><th id="palabra">PALABRA</th><th id="categoria">CATEGORIA</th><th id="acciones">ACCIONES</th></tr>'
-                $.each(datos, function(i, elemento) {
-                    palabras = palabras + '<tr><td>' + elemento.id +
-                        '</td><td>' + elemento.palabra +
-                        '</td><td>' + elemento.categoria +
-                        '</td><td><button class="borrar">Borrar</button>  <button class="modificar">Modificar</button></td></tr>'
-                });
-                palabras = palabras + '</table>';
-                $('#tablaPalabras').html(palabras);
-            },
-            error: function(xhr, status) {
-                alert('Disculpe, existió un problema');
-
-            },
-            complete: function(xhr, status) {
-                //alert('Petición realizada');
-            }
-        })
-    };
-
-
-
-
-
-
     //LOGIN
     $('#ingresar').click(function() {
         $.ajax({
@@ -72,7 +35,7 @@ $(document).ready(function() {
     // //INSERTAR NUEVO USUARIO
     $('#registrarUsuario').click(function() {
         $.ajax({
-            url: 'modelo/registroUsuario.php',
+            url: '../modelo/registroUsuario.php',
             type: 'POST',
             dataType: 'text',
             data: {

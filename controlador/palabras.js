@@ -89,12 +89,12 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(datos) {
                 console.log(datos);
-                var palabras = '<table id="tablaPalabras" border=1 class="table table-stripped"><tr><th>ID</th><th id="palabra">PALABRAS</th><th id="categoria">CATEGORIAS</th><th id="acciones">ACCIONES</th></tr>'
+                var palabras = '<table class="table table-striped" id="tablaPalabras" border=1 class="table table-stripped"><tr><th>ID</th><th id="palabra">PALABRAS</th><th id="categoria">CATEGORIAS</th><th id="acciones">ACCIONES</th></tr>'
                 $.each(datos, function(i, elemento) {
                     palabras = palabras + '<tr><td>' + elemento.id +
                         '</td><td>' + elemento.palabra +
                         '</td><td>' + elemento.categoria +
-                        '</td><td><button class="borrar">Borrar</button>  <button class="modificar">Modificar</button></td></tr>'
+                        '</td><td><button class="btn btn-danger" class="borrar">Borrar</button>  <button class="btn btn-warning" class="modificar">Modificar</button></td></tr>'
                 });
                 palabras = palabras + '</table>';
                 $('#contenido').html(palabras);

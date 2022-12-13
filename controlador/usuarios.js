@@ -16,7 +16,7 @@ $(document).ready(function() {
 
     $('#insertar').click(function() {
         $.ajax({
-            url: 'modelo/registroUsuario.php',
+            url: '../modelo/registroUsuario.php',
             type: 'POST',
             dataType: 'text',
             data: {
@@ -82,25 +82,25 @@ $(document).ready(function() {
     })
 
 
-    function muestraUsuarios() {
+    function muestraUsuarios(orden) {
         $.ajax({
-            url: 'modelo/dameUsuarios.php',
+            url: '../modelo/dameUsuarios.php?orden=' + orden + '&dir=' + dir,
             type: 'GET',
             dataType: 'json',
             success: function(datos) {
                 console.log(datos);
-                var usuarios = '<table id="tablaUsuarios" border=1 class="table table-stripped"><tr><th>ID</th><th id="titulo">PALABRA</th><th id="autor">CATEGORIA</th><th id="acciones">ACCIONES</th></tr>'
+                var usuarios = '<table class="table table-striped" id="tablaUsuarios" border=1 class="table table-stripped"><tr><th>ID</th><th id="titulo">PALABRA</th><th id="autor">CATEGORIA</th><th id="acciones">ACCIONES</th></tr>'
                 $.each(datos, function(i, elemento) {
                     usuarios = usuarios +
                         '<tr><td>' + elemento.id +
                         '</td><td>' + elemento.nombre +
                         '</td><td>' + elemento.contra +
-                        '</td><td>' + elemento.tipo +
-                        '</td><td><button class="borrar">Borrar</button>  <button class="modificar">Modificar</button></td></tr>'
+                        '</td><td>' + elemento.nivel +
+                        '</td><td><button id="borrar" class="btn btn-danger">Borrar</button>  <button class="btn btn-warning" id="modificar">Modificar</button></td></tr>'
                 });
                 usuarios
                 usuarios = usuarios + '</table>';
-                $('#tablaUsuarios').html(usuarios);
+                $('#contenido').html(usuarios);
             },
             error: function(xhr, status) {
                 alert('Disculpe, existió un problema');
