@@ -6,6 +6,15 @@
  * Clase de abstracción de base de datos de 'proyecto1ev'
  */
 
+ 
+$username = "root";
+$password = "";
+$database = "ahorcado";
+
+$mysqli = new mysqli("localhost", $username, $password, $database);
+mysqli_set_charset($mysqli,'UTF8');
+
+
 class Database { 
     
     public $pdo = null;

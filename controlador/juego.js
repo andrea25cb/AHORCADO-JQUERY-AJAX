@@ -44,39 +44,39 @@ function ocultar() {
 var numRandomDict = ((Math.random() * 4).toFixed(0));
 
 //diccionario segun la categoria del select que se elija
-function elegirCategoria() {
-    var opcion = document.getElementById("categoria");
+// function elegirCategoria() {
+//     var opcion = document.getElementById("categoria");
 
-    var indiceSel = opcion.selectedIndex;
+//     var indiceSel = opcion.selectedIndex;
 
-    var animales = ["ballena", "zorro", "panda", "pantera", "halcon"];
-    var asignaturas = ["griego", "biologia", "ingles", "quimica", "economia"];
-    var paises = ["Bulgaria", "Chequia", "Rumania", "Hungria", "Alemania"];
-    var randomCat = ["mosquito", "piruleta", "telefono", "agenda", "ajedrez"];
+//     var animales = ["ballena", "zorro", "panda", "pantera", "halcon"];
+//     var asignaturas = ["griego", "biologia", "ingles", "quimica", "economia"];
+//     var paises = ["Bulgaria", "Chequia", "Rumania", "Hungria", "Alemania"];
+//     var randomCat = ["mosquito", "piruleta", "telefono", "agenda", "ajedrez"];
 
-    switch (indiceSel) {
-        case 0:
-            document.getElementById('mensaje').textContent = "HAS ELEGIDO: RANDOM";
-            return randomCat;
-        case 1:
-            document.getElementById('mensaje').textContent = "HAS ELEGIDO:  ANIMALES";
-            return animales;
-        case 2:
-            document.getElementById('mensaje').textContent = "HAS ELEGIDO:  ASIGNATURAS";
-            return asignaturas;
-        case 3:
-            document.getElementById('mensaje').textContent = "HAS ELEGIDO:  PAISES";
-            return paises;
-    }
-    console.log(palabras);
-}
+//     switch (indiceSel) {
+//         case 0:
+//             document.getElementById('mensaje').textContent = "HAS ELEGIDO: RANDOM";
+//             return randomCat;
+//         case 1:
+//             document.getElementById('mensaje').textContent = "HAS ELEGIDO:  ANIMALES";
+//             return animales;
+//         case 2:
+//             document.getElementById('mensaje').textContent = "HAS ELEGIDO:  ASIGNATURAS";
+//             return asignaturas;
+//         case 3:
+//             document.getElementById('mensaje').textContent = "HAS ELEGIDO:  PAISES";
+//             return paises;
+//     }
+//     console.log(palabras);
+// }
 
 //obtenemos una palabra random del diccionario escogido
-function obtenerPalabra() {
-    categoria = elegirCategoria();
-    palabras = categoria[numRandomDict].toUpperCase();
-    return palabras;
-}
+// function obtenerPalabra() {
+//     categoria = elegirCategoria();
+//     palabras = categoria[numRandomDict].toUpperCase();
+//     return palabras;
+// }
 
 //generamos un span con los guiones según letras tenga la palabra
 function generarGuiones() {

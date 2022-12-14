@@ -1,9 +1,10 @@
 $(document).ready(function() {
     var orden = 'id';
     var dir = 'ASC';
+    var usuario = 'a';
     muestraPartidas(orden, usuario);
 
-    $('#contenido').on('click', 'th:not("#acciones")', function() {
+    $('#contenido').on('click', function() {
         elemento = $(this).text();
         muestraPartidas(elemento);
 
@@ -16,20 +17,16 @@ $(document).ready(function() {
 
     function muestraPartidas(orden, usuario) {
         $.ajax({
-            url: '../modelo/damePartidas.php?orden=' + orden + '&dir=' + dir + '&usuario=' + usuario,
+            url: '../modelo/damePartidasUsuario.php?orden=' + orden + '&dir=' + dir + '&usuario=' + usuario,
             type: 'GET',
             dataType: 'json',
-            data: {
-                usuario: $('#usuario').val(),
-
-            },
             success: function(datos) {
                 console.log(datos);
-                if (datos.nombre)
-                    var partidas = '<table id="tablaPartidas" border=1 class="table table-striped"><tr><th id="usuario">USUARIO</th><th id="puntuacion">PUNTUACION</th><th id="fecha">FECHA</th></tr>'
+                var partidas = '<table class="table table-striped" id="tablaPartidasUsuario" border=1 class="table table-stripped"><tr><th>ID</th><th id="usuario">USUARIO</th><th id="puntuacion">PUNTUACION</th><th id="fecha">FECHA</th></tr>'
                 $.each(datos, function(i, elemento) {
                     partidas = partidas +
-                        '<tr><td>' + elemento.usuario +
+                        '<tr><td>' + elemento.id +
+                        '</td><td>' + elemento.usuario +
                         '</td><td>' + elemento.puntuacion +
                         '</td><td>' + elemento.fecha +
                         '</td></>'

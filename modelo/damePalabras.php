@@ -1,12 +1,7 @@
 <?php
 // include('database.php');
 
-$username = "root";
-$password = "";
-$database = "ahorcado";
-
-$mysqli = new mysqli("localhost", $username, $password, $database);
-mysqli_set_charset($mysqli,'UTF8');
+include('database.php');
 
 $orden = $_GET['orden'];
 

@@ -1,17 +1,10 @@
 <?php
-// include('database.php');
-
-$username = "root";
-$password = "";
-$database = "ahorcado";
-
-$mysqli = new mysqli("localhost", $username, $password, $database);
-mysqli_set_charset($mysqli,'UTF8');
+include('database.php');
 
 $orden = $_GET['orden'];
 $usuario = $_GET['usuario'];
-
-$query = "SELECT * FROM partida WHERE usuario=$usuario ORDER BY $orden";
+echo $usuario;
+$query = "SELECT * FROM partida WHERE usuario='$usuario' ORDER BY $orden";
 $partidas = [];
 if ($result = $mysqli->query($query)) {
 
