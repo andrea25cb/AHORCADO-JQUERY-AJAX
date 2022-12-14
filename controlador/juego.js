@@ -8,14 +8,12 @@ var derrotas = 0;
 var guiones;
 var audio = new Audio('images/music.mp3');
 
-
+//CUANDO PULSA START PLAY:
 function principal() {
     ocultar();
     crearBotones();
     cargarBotones();
     generarGuiones();
-    elegirCategoria();
-    obtenerPalabra();
     document.getElementById('vidas').textContent = "VIDAS: 6";
     document.getElementById('victorias').textContent = "VICTORIAS: 0 / ";
     document.getElementById('derrotas').textContent = "DERROTAS: 0";
@@ -23,7 +21,6 @@ function principal() {
     console.log(palabras);
     play();
 }
-
 //musica:
 function play() {
     audio.play();
@@ -41,7 +38,7 @@ function ocultar() {
     document.getElementById('title').style.visibility = "hidden";
 }
 
-var numRandomDict = ((Math.random() * 4).toFixed(0));
+// var numRandomDict = ((Math.random() * 4).toFixed(0));
 
 //diccionario segun la categoria del select que se elija
 // function elegirCategoria() {

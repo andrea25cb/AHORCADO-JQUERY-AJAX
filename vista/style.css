@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
     background-repeat: round;
     font-family: 'Vollkorn', serif;
     font-weight: bolder;
@@ -13,8 +11,6 @@ html,
 body {
     height: 100vh;
     width: 100vw;
-    align-items: center;
-    text-align: center;
     overflow: hidden;
 }
 
@@ -150,8 +146,8 @@ h1 {
 
 #sel_cat {
     font-family: 'Vollkorn', serif;
-    position: center;
     margin-bottom: 25px;
+    width: 300px;
     outline: none;
     border: none;
     padding: 1rem 1.5rem;

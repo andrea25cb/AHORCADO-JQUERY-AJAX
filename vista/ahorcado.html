@@ -22,6 +22,8 @@
             text-decoration: none;
         }
         
+        #reiniciar,
+        #imagen,
         #start,
         #resolver,
         #vidas {
@@ -49,34 +51,40 @@
     <div class="col-sm-12">
         <a href="opcionesAdmin.html">VOLVER</a>
     </div>
-    <!-- <img id="imagen" alt="" width="200x"> -->
-    <span id="vidas"></span>
-    <h1>
-        <span id="title">
+    <center>
+        <div id="victorias"></div>
+        <div id="derrotas"></div>
+        <img id="imagen" alt="" width="200x">
+        <span id="vidas"></span><br>
+        <h1>
+            <span id="title">
             MIAURCADO
         </span>
-    </h1>
+            <div id="guiones"></div>
+        </h1>
 
-    <!-- <input id="reiniciar" onclick="reiniciar()" type="submit" value=""><br> -->
-    <span id="mensaje"></span>
-    <div id="ganapierde"></div>
-    <div id="palabra"></div>
-    <div id="le">
-        <span id="letras"></span>
-    </div>
+        <input id="reiniciar" type="submit" value=""><br>
 
-    <input id="start" onclick="principal()" type="submit" value="PLAY"><br>
-
-    <div class="login-form">
-        <!-- <h1>ELIGE UNA CATEGORIA</h1> -->
-        <select id="sel_cat">
-            <option value="0" disabled selected>Seleccione su categoría</option>
-        </select>
+        <span id="mensaje"></span>
+        <div id="ganapierde"></div>
         <div id="palabraRandom"></div>
-    </div>
+        <div id="le">
+            <span id="letras"></span>
+        </div>
 
-    <input id="resolver" type="button" value="QUIERO RESOLVER!"><br>
+        <div class="login-form">
+            <!-- <h1>ELIGE UNA CATEGORIA</h1> -->
+            <select id="sel_cat">
+            <!-- <option value="0" disabled selected>Seleccione su categoría</option> -->
+        </select>
 
+
+
+        </div>
+        <input id="start" type="submit" value="PLAY"><br>
+
+        <input id="resolver" type="button" value="QUIERO RESOLVER!"><br>
+    </center>
 </body>
 
 </html>
