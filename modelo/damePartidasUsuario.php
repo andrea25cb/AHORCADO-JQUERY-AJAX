@@ -1,10 +1,10 @@
 <?php
 include('database.php');
 
-$orden = $_GET['orden'];
 $usuario = $_GET['usuario'];
+
 echo $usuario;
-$query = "SELECT * FROM partida WHERE usuario='$usuario' ORDER BY $orden";
+$query = "SELECT * FROM partida WHERE usuario='$usuario'";
 $partidas = [];
 if ($result = $mysqli->query($query)) {
 

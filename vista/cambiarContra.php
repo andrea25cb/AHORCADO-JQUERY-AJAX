@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
-    <title>LOGIN</title>
+    <title>CAMBIAR CONTRASEÑA</title>
     <script src="../jquery-3.6.1.js"></script>
     <script src="../controlador/utiles.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -22,7 +22,7 @@
         
         body,
         html {
-            background-image: url('https://fondosmil.com/fondo/54336.png');
+            background-image: url('https://fondosmil.com/fondo/19430.jpg');
             background-repeat: no-repeat;
             background-size: cover;
         }
@@ -41,12 +41,8 @@
         }
         
         h2 {
-            color: rgb(203, 240, 39);
-            font-size: 4rem;
+            color: wheat;
             font-weight: bolder;
-            margin-top: 150px;
-            -webkit-animation: glow 1.2s ease-in-out infinite alternate;
-            animation: glow 1.2s ease-in-out infinite alternate;
             align-items: center;
             text-align: center;
         }
@@ -63,7 +59,7 @@
             margin-bottom: 15px;
             box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
             padding: 30px;
-            background-color: rgba(164, 181, 228, 0.527);
+            background-color: rgba(164, 228, 172, 0.527);
             border-radius: 10%;
         }
         
@@ -96,42 +92,52 @@
 </head>
 
 <body>
+<?=
+$nombreUser= $_GET['nombre'];
+$contraUser= $_GET['contra'];
 
+?>
     <div class="login-form">
         <center>
             <h2>
-                OPCIONES USUARIO
+                CAMBIAR CONTRASEÑA
             </h2>
-        </center><br><br>
+        </center>
 
-        <form method="post" class="form-horizontal">
-
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <input type="button" onclick="window.location.href='ahorcado.html'" id="jugar" class="btn btn-block" value="JUGAR!">
-                </div>
-            </div><br>
+        <form action="../modelo/updateContra.php?contra=<?=$contraUser?>$nombre=<?=$nombreUser?>" method="post" class="form-horizontal">
 
             <div class="form-group">
+                <label class="col-sm-6 text-left">Contraseña actual:</label>
                 <div class="col-sm-12">
-                    <input type="button" onclick="window.location.href='listarPartidasUsuario.html'" class="btn btn-block" value="VER MIS PARTIDAS">
+                    <input type="text" id="contra" class="form-control" value="<?=$contraUser ?>"/>
                 </div>
-            </div><br>
-
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <input type="button" onclick="window.location.href='cambiarContra.html'" class="btn btn-block" value="CAMBIAR CONTRASEÑA">
-                </div>
-            </div><br>
-
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <a href="../index.html">VOLVER</a>
-                </div>
-
             </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-6 text-left">Contraseña nueva:</label>
+                <div class="col-sm-12">
+                    <input type="text" name="nuevaContra" class="form-control" placeholder="Nueva contraseña" />
+                </div>
+            </div>
+            <br>
+
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <input type="submit" id="cambiarContra" class="btn btn-block" value="CAMBIAR CONTRASEÑA!">
+                </div>
+            </div><br>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <a href="opcionesUsuario.html">VOLVER</a>
+                </div>
+
+                <div id="mensaje"></div>
+                <!-- mensaje error -->
+            </div>
+
         </form>
     </div>
+
 
 </body>
 

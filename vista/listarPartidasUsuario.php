@@ -57,7 +57,7 @@
 
 <body>
     <div class="col-sm-12">
-        <a href="opcionesUsuario.html">VOLVER</a>
+        <a href="opcionesUsuario.php">VOLVER</a>
     </div>
     <div class="login-form">
         <h1>PARTIDAS USUARIO:

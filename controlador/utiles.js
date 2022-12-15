@@ -18,7 +18,7 @@ $(document).ready(function() {
                     $('#mensaje').html("USUARIO O CONTRASEÑA INCORRECTO");
 
                 } else {
-                    window.location.href = "vista/opcionesUsuario.html";
+                    window.location.href = "vista/opcionesUsuario.php?nombre=" + $('#nombre').val() + "&contra=" + $('#contra').val();
                 }
             },
 
