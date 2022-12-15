@@ -1,26 +1,26 @@
 $(document).ready(function() {
-    var orden = 'id';
-    var dir = 'ASC';
-    var usuario = 'a';
-    muestraPartidas(orden, usuario);
+    // var orden = 'id';
+    // var dir = 'ASC';
+    // var usuario = $_GET['usuario'];
+    muestraPartidas();
 
-    $('#contenido').on('click', function() {
-        elemento = $(this).text();
-        muestraPartidas(elemento);
+    // $('#contenido').on('click', function() {
+    //     elemento = $(this).text();
+    //     muestraPartidas(elemento);
 
-        if (dir == 'ASC') {
-            dir == 'DESC'
-        } else if (dir == 'DESC') {
-            dir == 'ASC'
-        }
-    });
+    //     if (dir == 'ASC') {
+    //         dir == 'DESC'
+    //     } else if (dir == 'DESC') {
+    //         dir == 'ASC'
+    //     }
+    // });
 
-    function muestraPartidas(orden, usuario) {
+    function muestraPartidas() {
         $.ajax({
-            url: '../modelo/damePartidasUsuario.php?orden=' + orden + '&dir=' + dir + '&usuario=' + usuario,
+            url: '../modelo/damePartidasUsuario.php',
             type: 'GET',
             dataType: 'json',
-            success: function(datos) {
+            data: success: function(datos) {
                 console.log(datos);
                 var partidas = '<table class="table table-striped" id="tablaPartidasUsuario" border=1 class="table table-stripped"><tr><th>ID</th><th id="usuario">USUARIO</th><th id="puntuacion">PUNTUACION</th><th id="fecha">FECHA</th></tr>'
                 $.each(datos, function(i, elemento) {
