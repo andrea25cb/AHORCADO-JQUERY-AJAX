@@ -43,12 +43,6 @@
             text-align: center;
         }
         
-        #insertar {
-            font-size: 15px;
-            font-weight: bold;
-            background-color: rgb(87, 228, 111);
-        }
-        
         a {
             background-color: rgb(38, 0, 255);
             color: white;
@@ -57,6 +51,10 @@
             padding: 10px;
             border-radius: 10px;
             text-decoration: none;
+        }
+        
+        #aceptar {
+            display: none;
         }
     </style>
 </head>
@@ -67,12 +65,25 @@
         <a href="opcionesAdmin.html">VOLVER</a>
     </div>
     <div class="login-form">
-        <h1>USUARIOS</h1>
+        <center>
+            <h1>USUARIOS</h1>
+        </center>
+        <div class="container">
+            <div class="jumbotron">
+                <input type="text" class="form-control" id="txtbusca" placeholder="Buscar usuarios" aria-label="Buscar" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                </div>
+            </div>
+            <div class="salida"></div>
+        </div>
+
+        <p> NOMBRE <input type="text" id="nombre">CONTRASEÑA <input type="text" id="contra"> <button id="insertar">Insertar nuevo usuario</button>
+            <button id="aceptar">aceptar modificacion</button> </p>
+
+        <div id="mensaje"></div>
         <div id="contenido"></div>
 
-        <h4>NUEVO USUARIO?</h4>
-        <p> NOMBRE <input type="text" id="nombre">CONTRASEÑA <input type="text" id="contra"> <button class="btn btn-block" id="insertar">Insertar nuevo usuario</button>
-        </p>
+
     </div>
 
 

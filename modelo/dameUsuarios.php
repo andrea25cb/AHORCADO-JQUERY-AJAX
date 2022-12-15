@@ -8,7 +8,6 @@ $usuarios = [];
 if ($result = $mysqli->query($query)) {
 
     while ($row = $result->fetch_assoc()) {
-        //$usuarios = $usuarios.$row['id'].",".$row['palabra'].",".$row['categoria'].",".$row['editorial'].",".$row['paginas'].",".$row['anno'].",";
         $usuarios[] = array('id'=>$row['id'],'nombre'=>$row['nombre'],'contra'=>$row['contra'],'nivel'=>$row['nivel']);
     }
 

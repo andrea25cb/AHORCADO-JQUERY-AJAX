@@ -3,6 +3,24 @@ $(document).ready(function() {
     var dir = 'ASC';
     muestraUsuarios(orden);
 
+    $(document).ready(function() {
+        $("#txtbusca").keyup(function() {
+            var parametros = "txtbusca=" + $(this).val()
+            $.ajax({
+                data: parametros,
+                url: '../modelo/buscarUsuarios.php',
+                type: 'post',
+                beforeSend: function() {},
+                success: function(response) {
+                    $(".salida").html(response);
+                },
+                error: function() {
+                    alert("error")
+                }
+            });
+        })
+    })
+
     $('#contenido').on('click', 'th:not("#acciones")', function() {
         elemento = $(this).text();
         muestraUsuarios(elemento);
@@ -24,16 +42,18 @@ $(document).ready(function() {
                 contra: $('#contra').val(),
             },
             success: function(datos) {
-                if (datos.nombre != $('#nombre').val() && datos.contra != $('#contra').val()) {
-                    $('#mensaje').html("USUARIO O CONTRASEÑA INCORRECTO");
-                } else if ($('#nombre').val() == empty || $('#contra').val() == empty)
+                if ($('#nombre').val() == null || $('#contra').val() == null) {
                     $('#mensaje').html("DEBE RELLENAR TODOS LOS CAMPOS");
+                } else {
+                    fila = '<tr><td>id</td><td>' + $('#nombre').val() + '</td><td>' + $('#contra').val() + '</td><td><button class="borrar"' + '>Borrar</button></td><td><button class="modificar"' + '>Modificar</button></td></tr>';
+
+                }
             },
             error: function(xhr, status) {
                 alert('Disculpe, existió un problema');
 
             },
-            complete: function(xhr, status) {
+            compvare: function(xhr, status) {
                 //alert('Petición realizada');
             }
         });
@@ -44,7 +64,7 @@ $(document).ready(function() {
         console.log(id);
         var fila = $(this).parent().parent();
         $.ajax({
-            url: 'borralibro.php?id=' + id,
+            url: '../modelo/borrarUsuario.php?id=' + id,
             type: 'GET',
             dataType: 'text',
             success: function(datos) {
@@ -52,34 +72,55 @@ $(document).ready(function() {
             },
             error: function(xhr, status) {
                 alert('Disculpe, existió un problema');
-
             },
-            complete: function(xhr, status) {
+            compvare: function(xhr, status) {
                 //alert('Petición realizada');
             }
         });
     })
 
+    let id = '';
     $('#contenido').on('click', '.modificar', function() {
-        var id = $(this).parent().siblings().eq(0).html();
+        id = $(this).parent().siblings().eq(0).html();
+        let nombre = $(this).parent().siblings().eq(1).html();
+        let contra = $(this).parent().siblings().eq(2).html();
+
+        $('#nombre').val(nombre);
+        $('#contra').val(contra);
+
         console.log(id);
-        var fila = $(this).parent().parent();
+        console.log(nombre);
+        console.log(contra);
+        $('#aceptar').css('display', 'initial');
+    });
+
+    $('#aceptar').on('click', function() {
+        console.log('holaaaaa');
+
+        $('#aceptar').css('display', 'none');
+
         $.ajax({
-            url: 'modificalibro.php?id=' + id,
-            type: 'GET',
+            url: '../modelo/modificarUsuario.php?id=' + id,
+            type: 'POST',
             dataType: 'text',
+            data: {
+                nombre: $('#nombre').val(),
+                contra: $('#contra').val(),
+            },
             success: function(datos) {
-                fila.remove();
+                $('#nombre').val();
+                $('#contra').val();
+
+                muestraUsuarios(orden);
             },
             error: function(xhr, status) {
                 alert('Disculpe, existió un problema');
-
             },
             complete: function(xhr, status) {
-                //alert('Petición realizada');
+                // alert('Petición realizada');
             }
         });
-    })
+    });
 
 
     function muestraUsuarios(orden) {
@@ -89,14 +130,14 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(datos) {
                 console.log(datos);
-                var usuarios = '<table class="table table-striped" id="tablaUsuarios" border=1 class="table table-stripped"><tr><th>ID</th><th id="titulo">PALABRA</th><th id="autor">CATEGORIA</th><th id="acciones">ACCIONES</th></tr>'
+                var usuarios = '<table class="table table-striped" id="tablaUsuarios" border=1"><tr><th>ID</th><th id="nombre">NOMBRE</th><th id="contra">CONTRASEÑA</th><th id="nivel">NIVEL</th><th id="acciones">ACCIONES</th></tr>'
                 $.each(datos, function(i, elemento) {
                     usuarios = usuarios +
                         '<tr><td>' + elemento.id +
                         '</td><td>' + elemento.nombre +
                         '</td><td>' + elemento.contra +
                         '</td><td>' + elemento.nivel +
-                        '</td><td><button id="borrar" class="btn btn-danger">Borrar</button>  <button class="btn btn-warning" id="modificar">Modificar</button></td></tr>'
+                        '</td><td><button class="borrar"' + '>Borrar</button></td><td><button class="modificar"' + '>Modificar</button></td></tr>';
                 });
                 usuarios
                 usuarios = usuarios + '</table>';
@@ -106,11 +147,10 @@ $(document).ready(function() {
                 alert('Disculpe, existió un problema');
 
             },
-            complete: function(xhr, status) {
+            compvare: function(xhr, status) {
                 //alert('Petición realizada');
             }
         })
     };
-
 
 })

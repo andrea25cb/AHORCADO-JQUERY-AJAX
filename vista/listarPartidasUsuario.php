@@ -56,17 +56,18 @@
 </head>
 
 <body>
+<?php $usuario= $_GET['usuario'];
+echo $usuario?>
     <div class="col-sm-12">
-        <a href="opcionesUsuario.php">VOLVER</a>
+        <a href="opcionesUsuario.php?nombre='<?=$usuario?>'">VOLVER</a>
     </div>
     <div class="login-form">
-        <h1>PARTIDAS USUARIO:
-
-        </h1>
+        <h1>PARTIDAS USUARIO: <?php 
+echo $usuario?> </h1>
         <div id="contenido">
-
         </div>
     </div>
+<input type="hidden" id="usuariohidden" value="<?php $usuario?>">
 </body>
 
 </html>

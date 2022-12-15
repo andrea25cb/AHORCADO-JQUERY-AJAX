@@ -16,19 +16,20 @@ $(document).ready(function() {
 
     $('#insertar').click(function() {
         $.ajax({
-            url: 'insertaPalabra.php',
+            url: '../modelo/insertarPalabra.php',
             type: 'POST',
             dataType: 'text',
             data: {
-                titulo: $('#titulo').val(),
-                autor: $('#autor').val(),
-                editorial: $('#editorial').val(),
-                páginas: $('#páginas').val(),
-                anno: $('#anno').val(),
+                palabra: $('#palabra').val(),
+                categoria: $('#categoria').val(),
             },
             success: function(datos) {
-                fila = '<tr><td>id</td><td>' + $('#titulo').val() + '</td><td>' + $('#autor').val() + '</td><td>' + $('#editorial').val() + '</td><td>' + $('#páginas').val() + '</td><td>' + $('#anno').val() + '</td><td><button class="borrar"' + '>Borrar</button></td><td><button class="modificar"' + '>Modificar</button></td></tr>';
-                $('#tablalibros').append(fila);
+                if ($('#palabra').val() == null || $('#categoria').val() == null) {
+                    $('#mensaje').html("DEBE RELLENAR TODOS LOS CAMPOS");
+                } else {
+                    fila = '<tr><td>id</td><td>' + $('#palabra').val() + '</td><td>' + $('#categoria').val() + '</td><td><button class="borrar"' + '>Borrar</button></td><td><button class="modificar"' + '>Modificar</button></td></tr>';
+
+                }
             },
             error: function(xhr, status) {
                 alert('Disculpe, existió un problema');
@@ -45,7 +46,7 @@ $(document).ready(function() {
         console.log(id);
         var fila = $(this).parent().parent();
         $.ajax({
-            url: 'borralibro.php?id=' + id,
+            url: '../modelo/borrarPalabra.php?id=' + id,
             type: 'GET',
             dataType: 'text',
             success: function(datos) {
@@ -53,7 +54,6 @@ $(document).ready(function() {
             },
             error: function(xhr, status) {
                 alert('Disculpe, existió un problema');
-
             },
             complete: function(xhr, status) {
                 //alert('Petición realizada');
@@ -61,26 +61,49 @@ $(document).ready(function() {
         });
     })
 
+    let id = '';
     $('#contenido').on('click', '.modificar', function() {
-        var id = $(this).parent().siblings().eq(0).html();
+        id = $(this).parent().siblings().eq(0).html();
+        let palabra = $(this).parent().siblings().eq(1).html();
+        let categoria = $(this).parent().siblings().eq(2).html();
+
+        $('#palabra').val(palabra);
+        $('#categoria').val(categoria);
+
         console.log(id);
-        var fila = $(this).parent().parent();
+        console.log(palabra);
+        console.log(categoria);
+        $('#aceptar').css('display', 'initial');
+    });
+
+    $('#aceptar').on('click', function() {
+        console.log('holaaaaa');
+
+        $('#aceptar').css('display', 'none');
+
         $.ajax({
-            url: 'modificalibro.php?id=' + id,
-            type: 'GET',
+            url: '../modelo/modificarPalabra.php?id=' + id,
+            type: 'POST',
             dataType: 'text',
+            data: {
+                palabra: $('#palabra').val(),
+                categoria: $('#categoria').val(),
+            },
             success: function(datos) {
-                fila.remove();
+                $('#palabra').val();
+                $('#categoria').val();
+
+                muestraPalabras(orden);
             },
             error: function(xhr, status) {
                 alert('Disculpe, existió un problema');
-
             },
             complete: function(xhr, status) {
-                //alert('Petición realizada');
+                // alert('Petición realizada');
             }
         });
-    })
+    });
+
 
     function muestraPalabras(orden) {
         $.ajax({
@@ -89,12 +112,12 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(datos) {
                 console.log(datos);
-                var palabras = '<table class="table table-striped" id="tablaPalabras" border=1 class="table table-stripped"><tr><th>ID</th><th id="palabra">PALABRAS</th><th id="categoria">CATEGORIAS</th><th id="acciones">ACCIONES</th></tr>'
+                var palabras = '<table id="tablaPalabras" border=1 class="table table-stripped"><tr><th>ID</th><th id="palabra">PALABRAS</th><th id="categoria">CATEGORIAS</th><th id="acciones">ACCIONES</th></tr>'
                 $.each(datos, function(i, elemento) {
                     palabras = palabras + '<tr><td>' + elemento.id +
                         '</td><td>' + elemento.palabra +
                         '</td><td>' + elemento.categoria +
-                        '</td><td><button class="btn btn-danger" class="borrar">Borrar</button>  <button class="btn btn-warning" class="modificar">Modificar</button></td></tr>'
+                        '</td><td><button class="borrar"' + '>Borrar</button></td><td><button class="modificar"' + '>Modificar</button></td></tr>';
                 });
                 palabras = palabras + '</table>';
                 $('#contenido').html(palabras);

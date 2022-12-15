@@ -7,7 +7,7 @@
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
     <title>CAMBIAR CONTRASEÑA</title>
     <script src="../jquery-3.6.1.js"></script>
-    <script src="../controlador/utiles.js"></script>
+    <script src="../controlador/updateContra.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <style type="text/css">
         * {
@@ -93,10 +93,11 @@
 
 <body>
 <?=
-$nombreUser= $_GET['nombre'];
+
 $contraUser= $_GET['contra'];
 
 ?>
+ <input type="hidden" id="contra" value="<?php $contraUser?>">
     <div class="login-form">
         <center>
             <h2>
@@ -104,19 +105,17 @@ $contraUser= $_GET['contra'];
             </h2>
         </center>
 
-        <form action="../modelo/updateContra.php?contra=<?=$contraUser?>$nombre=<?=$nombreUser?>" method="post" class="form-horizontal">
-
             <div class="form-group">
                 <label class="col-sm-6 text-left">Contraseña actual:</label>
                 <div class="col-sm-12">
-                    <input type="text" id="contra" class="form-control" value="<?=$contraUser ?>"/>
+                    <input type="text" id="contra" class="form-control" value="<?=$contraUser?>">
                 </div>
             </div>
             <br>
             <div class="form-group">
                 <label class="col-sm-6 text-left">Contraseña nueva:</label>
                 <div class="col-sm-12">
-                    <input type="text" name="nuevaContra" class="form-control" placeholder="Nueva contraseña" />
+                    <input type="text" name="nuevaContra" class="form-control" placeholder="Nueva contraseña">
                 </div>
             </div>
             <br>
@@ -128,14 +127,14 @@ $contraUser= $_GET['contra'];
             </div><br>
             <div class="form-group">
                 <div class="col-sm-12">
-                    <a href="opcionesUsuario.html">VOLVER</a>
+                    <a href="opcionesUsuario.php">VOLVER</a>
                 </div>
 
                 <div id="mensaje"></div>
                 <!-- mensaje error -->
             </div>
 
-        </form>
+        <!-- </form> -->
     </div>
 
 

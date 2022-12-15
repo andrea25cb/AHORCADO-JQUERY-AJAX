@@ -99,7 +99,6 @@
     <?php 
     $nombreUser=$_GET["nombre"];
     $contraUser=$_GET["contra"];
-    
     ?>
     <div class="login-form">
         <center>
@@ -109,22 +108,23 @@
         </center><br><br>
 
         <form method="post" class="form-horizontal">
-
+        <input type="hidden" id="usuariohidden" value="<?php $nombreUser?>">
+        <input type="hidden" id="contra" value="<?php $contraUser?>">
             <div class="form-group">
                 <div class="col-sm-12">
-                    <input type="button" onclick="window.location.href='ahorcado.html?nombre=<?=$nombreUser?>'" id="jugar" class="btn btn-block" value="JUGAR!">
+                    <input type="button" onclick="window.location.href='ahorcado.html'" id="jugar" class="btn btn-block" value="JUGAR!">
                 </div>
             </div><br>
 
             <div class="form-group">
                 <div class="col-sm-12">
-                    <input type="button" onclick="window.location.href='listarPartidasUsuario.php?usuario=<?=$nombreUser?>'" class="btn btn-block" value="VER MIS PARTIDAS">
+                    <input type="button" onclick="window.location.href='listarPartidasUsuario.php'" value="VER MIS PARTIDAS">
                 </div>
             </div><br>
 
             <div class="form-group">
                 <div class="col-sm-12">
-                    <button onclick="window.location.href='cambiarContra.php?nombre=<?=$nombreUser?>&contra=<?=$contraUser?>'" class="btn btn-block" value="<?=$contraUser?>">CAMBIAR CONTRASEÑA</button>
+                <input type="button" onclick="window.location.href='cambiarContra.php'" value="CAMBIAR CONTRASEÑA">
                 </div>
             </div><br>
 

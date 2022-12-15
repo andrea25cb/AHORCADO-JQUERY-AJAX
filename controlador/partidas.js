@@ -14,38 +14,38 @@ $(document).ready(function() {
         }
     });
 
-    $('#insertar').click(function() {
-        $.ajax({
-            url: 'insertalibro.php',
-            type: 'POST',
-            dataType: 'text',
-            data: {
-                titulo: $('#titulo').val(),
-                autor: $('#autor').val(),
-                editorial: $('#editorial').val(),
-                páginas: $('#páginas').val(),
-                anno: $('#anno').val(),
-            },
-            success: function(datos) {
-                fila = '<tr><td>id</td><td>' + $('#titulo').val() + '</td><td>' + $('#autor').val() + '</td><td>' + $('#editorial').val() + '</td><td>' + $('#páginas').val() + '</td><td>' + $('#anno').val() + '</td><td><button class="borrar"' + '>Borrar</button></td><td><button class="modificar"' + '>Modificar</button></td></tr>';
-                $('#tablalibros').append(fila);
-            },
-            error: function(xhr, status) {
-                alert('Disculpe, existió un problema');
+    // $('#insertar').click(function() {
+    //     $.ajax({
+    //         url: 'insertalibro.php',
+    //         type: 'POST',
+    //         dataType: 'text',
+    //         data: {
+    //             titulo: $('#titulo').val(),
+    //             autor: $('#autor').val(),
+    //             editorial: $('#editorial').val(),
+    //             páginas: $('#páginas').val(),
+    //             anno: $('#anno').val(),
+    //         },
+    //         success: function(datos) {
+    //             fila = '<tr><td>id</td><td>' + $('#titulo').val() + '</td><td>' + $('#autor').val() + '</td><td>' + $('#editorial').val() + '</td><td>' + $('#páginas').val() + '</td><td>' + $('#anno').val() + '</td><td><button class="borrar"' + '>Borrar</button></td><td><button class="modificar"' + '>Modificar</button></td></tr>';
+    //             $('#tablalibros').append(fila);
+    //         },
+    //         error: function(xhr, status) {
+    //             alert('Disculpe, existió un problema');
 
-            },
-            complete: function(xhr, status) {
-                //alert('Petición realizada');
-            }
-        });
-    });
+    //         },
+    //         complete: function(xhr, status) {
+    //             //alert('Petición realizada');
+    //         }
+    //     });
+    // });
 
     $('#contenido').on('click', '.borrar', function() {
         var id = $(this).parent().siblings().eq(0).html();
         console.log(id);
         var fila = $(this).parent().parent();
         $.ajax({
-            url: 'borralibro.php?id=' + id,
+            url: '../modelo/borrarPartida.php?id=' + id,
             type: 'GET',
             dataType: 'text',
             success: function(datos) {
@@ -61,26 +61,53 @@ $(document).ready(function() {
         });
     })
 
+
+    let id = '';
     $('#contenido').on('click', '.modificar', function() {
-        var id = $(this).parent().siblings().eq(0).html();
-        console.log(id);
-        var fila = $(this).parent().parent();
+        id = $(this).parent().siblings().eq(0).html();
+        let usuario = $(this).parent().siblings().eq(1).html();
+        let puntuacion = $(this).parent().siblings().eq(2).html();
+        let fecha = $(this).parent().siblings().eq(3).html();
+
+        $('#usuario').val(usuario);
+        $('#puntuacion').val(puntuacion);
+        $('#fecha').val(fecha),
+
+            console.log(id);
+        console.log(usuario);
+        console.log(puntuacion);
+        $('#aceptar').css('display', 'initial');
+    });
+
+    $('#aceptar').on('click', function() {
+        console.log('holaaaaa');
+
+        $('#aceptar').css('display', 'none');
+
         $.ajax({
-            url: 'modificalibro.php?id=' + id,
-            type: 'GET',
+            url: '../modelo/modificarPartida.php?id=' + id,
+            type: 'POST',
             dataType: 'text',
+            data: {
+                usuario: $('#usuario').val(),
+                puntuacion: $('#puntuacion').val(),
+                fecha: $('#fecha').val(),
+            },
             success: function(datos) {
-                fila.remove();
+                $('#usuario').val();
+                $('#puntuacion').val();
+                $('#fecha').val(),
+
+                    muestraUsuarios(orden);
             },
             error: function(xhr, status) {
                 alert('Disculpe, existió un problema');
-
             },
             complete: function(xhr, status) {
-                //alert('Petición realizada');
+                // alert('Petición realizada');
             }
         });
-    })
+    });
 
     function muestraPartidas(orden) {
         $.ajax({
@@ -96,7 +123,7 @@ $(document).ready(function() {
                         '</td><td>' + elemento.usuario +
                         '</td><td>' + elemento.puntuacion +
                         '</td><td>' + elemento.fecha +
-                        '</td><td><button class="btn btn-danger" class="borrar">Borrar</button>  <button class="btn btn-warning" class="modificar">Modificar</button></td></>'
+                        '</td><td><button class="borrar"' + '>Borrar</button></td><td><button class="modificar"' + '>Modificar</button></td></tr>';
                 });
                 partidas = partidas + '</table>';
                 $('#contenido').html(partidas);

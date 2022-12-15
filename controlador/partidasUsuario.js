@@ -1,9 +1,9 @@
 $(document).ready(function() {
     // var orden = 'id';
     // var dir = 'ASC';
-    // var usuario = $_GET['usuario'];
-    muestraPartidas();
-
+    //el get se lo debo pasar directamente al sql(?)
+    // var usuario = $_GET['usuario']; 
+    //el problema es que no podemos usar get, ya que no es un archivo php..
     // $('#contenido').on('click', function() {
     //     elemento = $(this).text();
     //     muestraPartidas(elemento);
@@ -14,13 +14,18 @@ $(document).ready(function() {
     //         dir == 'ASC'
     //     }
     // });
+    var usuario = $('#usuariohidden').val();
 
-    function muestraPartidas() {
+    muestraPartidas(usuario);
+    console.log(usuario);
+
+    function muestraPartidas(usuario) {
         $.ajax({
-            url: '../modelo/damePartidasUsuario.php',
+            url: '../modelo/damePartidasUsuario.php?usuario=' + usuario,
             type: 'GET',
             dataType: 'json',
-            data: success: function(datos) {
+
+            success: function(datos) {
                 console.log(datos);
                 var partidas = '<table class="table table-striped" id="tablaPartidasUsuario" border=1 class="table table-stripped"><tr><th>ID</th><th id="usuario">USUARIO</th><th id="puntuacion">PUNTUACION</th><th id="fecha">FECHA</th></tr>'
                 $.each(datos, function(i, elemento) {
