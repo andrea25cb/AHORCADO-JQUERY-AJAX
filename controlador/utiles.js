@@ -19,13 +19,8 @@ $(document).ready(function() {
 
                 } else {
                     var nombre = $('#nombre').val();
-                    $.get("../vista/opcionesUsuario.php", { nombre }, function(data) {
-                        var usuariomal = data;
-                        nombre = usuariomal.slice(1, -1);
-                        $("#usuario").html(usuario);
-                        $('#start').fadeIn(1000);
-                    });
-                    window.location.href = "vista/opcionesUsuario.php?nombre=" + nombre;
+                    var contra = $('#contra').val();
+                    window.location.href = "vista/opcionesUsuario.php?nombre=" + nombre + "&contra=" + contra;
                 }
             },
 

@@ -116,7 +116,7 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(datos) {
                 console.log(datos);
-                var partidas = '<table class="table table-striped" id="tablaPartidas" border=1 class="table table-stripped"><tr><th>ID</th><th id="usuario">USUARIO</th><th id="puntuacion">PUNTUACION</th><th id="fecha">FECHA</th><th id="acciones">ACCIONES</th></tr>'
+                var partidas = '<table class="table table-striped" id="tablaPartidas" border=1><tr><th>ID</th><th id="usuario">USUARIO</th><th id="puntuacion">PUNTUACION</th><th id="fecha">FECHA</th><th id="acciones">ACCIONES</th></tr>'
                 $.each(datos, function(i, elemento) {
                     partidas = partidas +
                         '<tr><td>' + elemento.id +

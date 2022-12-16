@@ -1,42 +1,17 @@
 $(document).ready(function() {
-    // var orden = 'id';
-    // var dir = 'ASC';
-    //el get se lo debo pasar directamente al sql(?)
-    // var usuario = $_GET['usuario']; 
-    //el problema es que no podemos usar get, ya que no es un archivo php..
-    // $('#contenido').on('click', function() {
-    //     elemento = $(this).text();
-    //     muestraPartidas(elemento);
 
-    //     if (dir == 'ASC') {
-    //         dir == 'DESC'
-    //     } else if (dir == 'DESC') {
-    //         dir == 'ASC'
-    //     }
-    // });
+    var nombre = $('#usuario').text();
+    muestraPartidas(nombre);
 
-
-    muestraPartidas(usuario);
-    console.log(usuario);
-
-    function muestraPartidas(usuario) {
+    function muestraPartidas(nombre) {
         $.ajax({
-            url: '../modelo/damePartidasUsuario.php?usuario=' + usuario,
+            url: '../modelo/damePartidasUsuario.php?nombre=' + nombre,
             type: 'GET',
             dataType: 'json',
-            data: {
-                nombre: $('#nombre').val(),
-            },
             success: function(datos) {
-                var usuario = $('#nombre').val();
-                $.get("../modelo/damePartidasUsuario.php", { usuario }, function(data) {
-                    var usuariomal = data;
-                    usuario = usuariomal.slice(1, -1);
-                    $("#usuario").html(usuario);
-
-                });
                 console.log(datos);
-                var partidas = '<table class="table table-striped" id="tablaPartidasUsuario" border=1 class="table table-stripped"><tr><th>ID</th><th id="usuario">USUARIO</th><th id="puntuacion">PUNTUACION</th><th id="fecha">FECHA</th></tr>'
+                console.log(nombre);
+                var partidas = '<table class="table table-striped" id="tablaPartidasUsuario" border=1><tr><th>ID</th><th id="nombre">nombre</th><th id="puntuacion">PUNTUACION</th><th id="fecha">FECHA</th></tr>'
                 $.each(datos, function(i, elemento) {
                     partidas = partidas +
                         '<tr><td>' + elemento.id +

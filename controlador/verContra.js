@@ -1,27 +1,11 @@
 $(document).ready(function() {
 
-    var contra = $('#contrahidden').val();
+    var contra = $('#contra').val();
+    var nuevaContra = $('#nuevaContra').val();
 
     muestraContra(contra);
     console.log(contra);
-
-    function cambiarContra() {
-        $.ajax({
-            url: '../modelo/updateContra.php?contra=' + contra,
-            type: 'GET',
-            dataType: 'json',
-            success: function(datos) {
-                console.log(datos);
-            },
-            error: function(xhr, status) {
-                alert('Disculpe, existió un problema');
-
-            },
-            complete: function(xhr, status) {
-                //alert('Petición realizada');
-            }
-        })
-    }
+    console.log(nuevaContra);
 
     function muestraContra(contra) {
         $.ajax({

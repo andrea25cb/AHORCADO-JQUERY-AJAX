@@ -56,20 +56,16 @@
 </head>
 
 <body>
-<?php $usuario= $_GET['nombre'];
-echo $usuario?>
-    <div class="col-sm-12">
-   <div id="usuario"></div>  <!-- aqui sale la variable del login -->
-        <a href="opcionesUsuario.php?nombre='<?=$usuario?>'">VOLVER</a>
-    </div>
-    <div class="login-form">
-        <h1>PARTIDAS USUARIO: <?php 
-echo $usuario?> </h1>
+<?php $usuario= $_GET['nombre'] ?>
+
+<div>Usuario:</div> <span id="usuario"><?=$usuario?></span>  
+
+        <a href="opcionesUsuario.php?nombre="<?=$usuario?>">VOLVER</a>
+        <h1>PARTIDAS USUARIO: <?php $usuario?> </h1>
         <div id="contenido">
-        </div>
+  
     </div>
  
-<input type="hidden" id="usuariohidden" value="<?php $usuario?>">
 </body>
 
 </html>

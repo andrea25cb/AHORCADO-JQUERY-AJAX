@@ -7,7 +7,7 @@
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
     <title>LOGIN</title>
     <script src="../jquery-3.6.1.js"></script>
-    <script src="../controlador/utiles.js"></script>
+    <script src="../controlador/opcionesUsuario.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <style type="text/css">
         * {
@@ -97,35 +97,34 @@
 
 <body>
     <?php 
-    // $nombreUser=$_GET["nombre"];
-    // $contraUser=$_GET["contra"];
+   $usuario = $_GET['nombre'];
+   $contra = $_GET['contra'];
     ?>
-    <div id="usuario"></div>
     <div class="login-form">
         <center>
             <h2>
                 OPCIONES USUARIO
             </h2>
         </center><br><br>
-
-        <form method="post" class="form-horizontal">
-        <input type="hidden" id="nombre" value="<?php $_GET['nombre'] ?>">
-        <!-- <input type="hidden" id="contra" value="<?php $contraUser?>"> -->
+        <div>Usuario:</div> <span id="usuario"><?=$usuario?></span>  
+        <div>Contra:</div> <span id="contra"><?=$contra?></span>  
+        
+        <form method="get" class="form-horizontal">
             <div class="form-group">
                 <div class="col-sm-12">
-                    <input type="button" onclick="window.location.href='ahorcado.html'" id="jugar" class="btn btn-block" value="JUGAR!">
+                    <input id="jugar" type="button" value="JUGAR!">
                 </div>
             </div><br>
 
             <div class="form-group">
                 <div class="col-sm-12">
-                    <input type="button" onclick="window.location.href='listarPartidasUsuario.php'" value="VER MIS PARTIDAS">
+                    <input id="verPartidas" type="button" value="VER MIS PARTIDAS">
                 </div>
             </div><br>
 
             <div class="form-group">
                 <div class="col-sm-12">
-                <input type="button" onclick="window.location.href='cambiarContra.php'" value="CAMBIAR CONTRASEÑA">
+                <input id="cambiarContra" type="button" value="CAMBIAR CONTRASEÑA">
                 </div>
             </div><br>
 

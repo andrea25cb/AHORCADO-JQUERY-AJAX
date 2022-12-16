@@ -10,7 +10,7 @@ $results = $query->fetchAll(PDO::FETCH_OBJ);
 
 if ($query->rowCount() > 0) {
     foreach ($results as $registro) {
-        echo json_encode($registro->palabra);
+        echo json_encode($registro->contra);
     }
 }
 

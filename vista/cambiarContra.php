@@ -7,7 +7,8 @@
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
     <title>CAMBIAR CONTRASEÑA</title>
     <script src="../jquery-3.6.1.js"></script>
-    <script src="../controlador/updateContra.js"></script>
+    <script src="../controlador/verContra.js"></script>
+    <script src="../controlador/cambiarContra.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <style type="text/css">
         * {
@@ -92,12 +93,12 @@
 </head>
 
 <body>
-<?=
+<?php 
+// $usuario = $_GET['nombre'];
+$contra = $_GET['contra'];
+    ?>
+<!-- <div>Usuario:</div> <span id="usuario"><?=$usuario?></span>   -->
 
-$contraUser= $_GET['contra'];
-
-?>
- <input type="hidden" id="contra" value="<?php $contraUser?>">
     <div class="login-form">
         <center>
             <h2>
@@ -108,21 +109,22 @@ $contraUser= $_GET['contra'];
             <div class="form-group">
                 <label class="col-sm-6 text-left">Contraseña actual:</label>
                 <div class="col-sm-12">
-                    <input type="text" id="contra" class="form-control" value="<?=$contraUser?>">
+                    <input type="text" id="contra" class="form-control" value="<?=$contra?>">
                 </div>
             </div>
             <br>
+
             <div class="form-group">
                 <label class="col-sm-6 text-left">Contraseña nueva:</label>
                 <div class="col-sm-12">
-                    <input type="text" name="nuevaContra" class="form-control" placeholder="Nueva contraseña">
+                    <input type="text" id="nuevaContra" class="form-control" placeholder="Nueva contraseña">
                 </div>
             </div>
             <br>
 
             <div class="form-group">
                 <div class="col-sm-12">
-                    <input type="submit" id="cambiarContra" class="btn btn-block" value="CAMBIAR CONTRASEÑA!">
+                    <input type="submit" id="cambiarContra" value="CAMBIAR CONTRASEÑA!">
                 </div>
             </div><br>
             <div class="form-group">
