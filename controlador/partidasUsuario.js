@@ -14,7 +14,7 @@ $(document).ready(function() {
     //         dir == 'ASC'
     //     }
     // });
-    var usuario = $('#usuariohidden').val();
+
 
     muestraPartidas(usuario);
     console.log(usuario);
@@ -24,8 +24,17 @@ $(document).ready(function() {
             url: '../modelo/damePartidasUsuario.php?usuario=' + usuario,
             type: 'GET',
             dataType: 'json',
-
+            data: {
+                nombre: $('#nombre').val(),
+            },
             success: function(datos) {
+                var usuario = $('#nombre').val();
+                $.get("../modelo/damePartidasUsuario.php", { usuario }, function(data) {
+                    var usuariomal = data;
+                    usuario = usuariomal.slice(1, -1);
+                    $("#usuario").html(usuario);
+
+                });
                 console.log(datos);
                 var partidas = '<table class="table table-striped" id="tablaPartidasUsuario" border=1 class="table table-stripped"><tr><th>ID</th><th id="usuario">USUARIO</th><th id="puntuacion">PUNTUACION</th><th id="fecha">FECHA</th></tr>'
                 $.each(datos, function(i, elemento) {

@@ -97,9 +97,10 @@
 
 <body>
     <?php 
-    $nombreUser=$_GET["nombre"];
-    $contraUser=$_GET["contra"];
+    // $nombreUser=$_GET["nombre"];
+    // $contraUser=$_GET["contra"];
     ?>
+    <div id="usuario"></div>
     <div class="login-form">
         <center>
             <h2>
@@ -108,8 +109,8 @@
         </center><br><br>
 
         <form method="post" class="form-horizontal">
-        <input type="hidden" id="usuariohidden" value="<?php $nombreUser?>">
-        <input type="hidden" id="contra" value="<?php $contraUser?>">
+        <input type="hidden" id="nombre" value="<?php $_GET['nombre'] ?>">
+        <!-- <input type="hidden" id="contra" value="<?php $contraUser?>"> -->
             <div class="form-group">
                 <div class="col-sm-12">
                     <input type="button" onclick="window.location.href='ahorcado.html'" id="jugar" class="btn btn-block" value="JUGAR!">
