@@ -2,11 +2,15 @@ $(document).ready(function() {
     muestraCategorias();
     var imagenes = ["images/1.png", "images/2.png", "images/3.png", "images/4.png", "images/5.png", "images/6.png", "images/7.png"]
     var acierto = [];
+    var vidas = 6;
+    var fallos = 1; //se van sumando
+    var aciertos = 0; //se van sumando
     var palabras;
     var vidas = 6;
     var fallos = 1;
-    var victorias = 0;
-    var derrotas = 0;
+    var puntos = 0;
+    // var victorias = 0;
+    // var derrotas = 0;
     var guiones;
     var audio = new Audio('images/music.mp3');
 
@@ -57,8 +61,8 @@ $(document).ready(function() {
         // elegirCategoria();
         // obtenerPalabra();
         document.getElementById('vidas').textContent = "VIDAS: 6";
-        document.getElementById('victorias').textContent = "VICTORIAS: 0 / ";
-        document.getElementById('derrotas').textContent = "DERROTAS: 0";
+        // document.getElementById('victorias').textContent = "VICTORIAS: 0 / ";
+        // document.getElementById('derrotas').textContent = "DERROTAS: 0";
         document.getElementById('imagen').style.visibility = "visible";
         document.getElementById('imagen').style.display = "initial";
         document.getElementById('imagen').src = "images/0.png";
@@ -72,10 +76,10 @@ $(document).ready(function() {
     }
 
     //al darle a reiniciar se vuelven a inicializar las variables
-
-    $('#reiniciar').click(function() { //en vez de hacer reload, hago que vuelva a aparecer lo escondido, y escondo lo anterior.
+    $('#reiniciar').click(function() {
         location.reload();
     });
+
     //paso a la siguiente pantalla, oculto los elementos de la primera
     function ocultar() {
         document.getElementById("reiniciar").style.visibility = "hidden";
@@ -112,13 +116,17 @@ $(document).ready(function() {
             arrayBotones[i].addEventListener("click", buscarLetra)
         }
     }
-
+    //NO FUNCIONA:
     //cada vez que se hace 'click'(evento) a un boton, si la palabra no incluye la letra, funcion usuarioFalla(),
     //si la palabra incluye la letra, funcion cambiarLetra
     function buscarLetra(event) {
+        console.log(event);
         letra = event.target.value;
         var i = 0;
-        if (palabras.includes(letra)) {
+        if (palabras.includes(letra)) { //falla algo aqui
+            puntos += +2;
+            console.log(palabras);
+            console.log(letra);
             cambiarLetra(i, letra);
         } else {
             usuarioFalla();
@@ -126,14 +134,14 @@ $(document).ready(function() {
         event.target.disabled = true;
         comprobarLetra();
     }
-
+    //NO FUNCIONA
     //los guiones se intercambian por la letra si ésta es acertada
     function cambiarLetra(i, letra) {
         for (let j = 0; j < palabras.length; j++) {
             i = palabras.indexOf(letra, i);
             if (i == -1) break;
             acierto[i] = letra;
-            document.getElementById("letra" + i).innerHTML = " " + letra;
+            document.getElementById("letra" + i).innerHTML = " " + letra; //guiones
             i++;
         }
     }
@@ -141,6 +149,7 @@ $(document).ready(function() {
     function usuarioFalla() {
         if (document.getElementById("imagen") != null) {
             document.getElementById("imagen").src = imagenes[fallos];
+            puntos += -1;
             fallos++;
             if (!palabras.includes(letra)) {
                 vidas--;
@@ -148,10 +157,11 @@ $(document).ready(function() {
             }
 
             if (vidas <= 0) {
-                derrotas++;
+                // derrotas++;
+                document.getElementById('puntos').textContent = "HAS CONSEGUIDO: " + puntos + " PUNTOS.";
                 document.getElementById('mensaje').textContent = "HAS PERDIDO... LA PALABRA ERA: " + palabras;
                 document.getElementById('reiniciar').value = "PLAY AGAIN?";
-                document.getElementById('derrotas').textContent = "DERROTAS: " + derrotas;
+                // document.getElementById('derrotas').textContent = "DERROTAS: " + derrotas;
                 document.getElementById('ganapierde').innerHTML = "<img src='images/gameover.gif'>";
                 //poner sonido de perder
                 document.getElementById('palabra').style.visibility = "hidden";
@@ -165,8 +175,8 @@ $(document).ready(function() {
     //si acierta todas las letras gana:
     function comprobarLetra() {
         if (acierto.join('') == palabras) {
-            victorias++;
-            document.getElementById('victorias').textContent = "VICTORIAS: " + victorias;
+            // victorias++;
+            // document.getElementById('victorias').textContent = "VICTORIAS: " + victorias;
             document.getElementById('mensaje').textContent = "¡FELICIDADES, HAS GANADO!";
             document.getElementById('reiniciar').value = "PLAY AGAIN?";
             document.getElementById('reiniciar').style.visibility = "visible";
