@@ -106,27 +106,28 @@
     <div class="login-form">
         <center>
             <h2>
-                OPCIONES <span id="usuario"><?=$usuario?>
+                OPCIONES <span id="nombre"><?=$usuario?>
             </h2>
         </center><br><br>
+
         <div id="c">Contra:<span id="contra"><?=$contra?></span></div>
         
         <form method="get" class="form-horizontal">
             <div class="form-group">
                 <div class="col-sm-12">
-                    <input id="jugar" type="button" value="JUGAR!">
+                    <input id="jugar" class="btn btn-block" type="button" value="JUGAR!">
                 </div>
             </div><br>
 
             <div class="form-group">
                 <div class="col-sm-12">
-                    <input id="verPartidas" type="button" value="VER MIS PARTIDAS">
+                    <input id="verPartidas" class="btn btn-block" type="button" value="VER MIS PARTIDAS">
                 </div>
             </div><br>
 
             <div class="form-group">
                 <div class="col-sm-12">
-                <input id="cambiarContra" type="button" value="CAMBIAR CONTRASEÑA">
+                <input id="cambiarContra" class="btn btn-block" type="button" value="CAMBIAR CONTRASEÑA">
                 </div>
             </div><br>
 

@@ -7,33 +7,17 @@
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
     <title>CAMBIAR CONTRASEÑA</title>
     <script src="../jquery-3.6.1.js"></script>
+    <link rel="stylesheet" href="style.css">
     <script src="../controlador/verContra.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <style type="text/css">
         * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            background-repeat: round;
+          
+            padding: 10px;
             font-family: 'Vollkorn', serif;
             font-weight: bolder;
-            overflow: hidden;
-        }
-        
-        body,
-        html {
-            background-image: url('https://fondosmil.com/fondo/19430.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 10px #fff, 0 0 30px #28b969, 0 0 40px #fff, 0 0 50px #fff;
-            }
-            to {
-                text-shadow: 0 0 10px #fff, #fff, 0 0 45px #28b969, 0 0 55px #fff, 0 0 65px #fff;
-            }
+            background-color: rgb(198, 247, 198);
+            border-radius: 20px;
         }
         
         span {
@@ -41,7 +25,7 @@
         }
         
         h2 {
-            color: wheat;
+            color: green;
             font-weight: bolder;
             align-items: center;
             text-align: center;
@@ -80,7 +64,7 @@
         }
         
         a {
-            background-color: red;
+            background-color: green;
             color: white;
             font-size: 20px;
             font-weight: bold;
@@ -97,10 +81,11 @@
 
 <body>
 <?php 
-
+$nombre = $_GET['nombre'];
 $contra = $_GET['contra'];
-    ?>
-
+?>
+<a href="opcionesUsuario.php?nombre=<?=$nombre?>&contra=<?=$contra?>">VOLVER</a>
+              
     <div class="login-form">
         <center>
             <h2>
@@ -129,14 +114,10 @@ $contra = $_GET['contra'];
                     <input type="submit" id="cambiarContra" value="CAMBIAR CONTRASEÑA">
                 </div>
             </div><br>
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <a href="opcionesUsuario.php">VOLVER</a>
-                </div>
-
+           
                 <div id="mensaje"></div>
                 <!-- mensaje error -->
-            </div>
+           
 
         <!-- </form> -->
     </div>

@@ -11,40 +11,24 @@
     <script src="../controlador/partidasUsuario.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <style type="text/css">
-        * {
-            box-sizing: border-box;
+       * {
             margin: 10px;
             padding: 10px;
             font-family: 'Vollkorn', serif;
             font-weight: bolder;
-        }
-        
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 10px #fff, 0 0 30px #28b969, 0 0 40px #fff, 0 0 50px #fff;
-            }
-            to {
-                text-shadow: 0 0 10px #fff, #fff, 0 0 45px #28b969, 0 0 55px #fff, 0 0 65px #fff;
-            }
+            background-color: rgb(198, 247, 198);
+            border-radius: 20px;
         }
         
         span {
             font-size: 1em;
         }
-        
-        h2 {
-            color: rgb(32, 133, 32);
-            font-size: 4rem;
-            font-weight: bolder;
-            margin-top: 150px;
-            -webkit-animation: glow 1.2s ease-in-out infinite alternate;
-            animation: glow 1.2s ease-in-out infinite alternate;
-            align-items: center;
-            text-align: center;
-        }
+#usuario{
+    display: none;
+}
         
         a {
-            background-color: rgb(38, 0, 255);
+            background-color: green;
             color: white;
             font-size: 20px;
             font-weight: bold;
@@ -57,11 +41,14 @@
 </head>
 
 <body>
-<?php $usuario= $_GET['nombre'] ?>
-<a href="opcionesUsuario.php?nombre="<?=$usuario?>">VOLVER</a>
-<span>Usuario:</span> <span id="usuario"><?=$usuario?></span>  
+<?php 
+$nombre = $_GET['nombre'];
+$contra = $_GET['contra'];
+?>
+<a href="opcionesUsuario.php?nombre=<?=$nombre?>&contra=<?=$contra?>">VOLVER</a><br><br>
 
-        <h1>PARTIDAS USUARIO: <?=$usuario?> </h1>
+<span id="usuario"><?=$nombre?></span>  
+<center><h1>PARTIDAS USUARIO: <?=$nombre?> </h1></center>
         <div id="contenido">
   
     </div>

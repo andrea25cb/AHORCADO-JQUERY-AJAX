@@ -7,9 +7,9 @@
  */
 
  
-$username = "root";
-$password = "";
-$database = "ahorcado";
+$username = "andreacordon";
+$password = "N2l@7nu1";
+$database = "andreacordon";
 
 $mysqli = new mysqli("localhost", $username, $password, $database);
 mysqli_set_charset($mysqli,'UTF8');
@@ -19,11 +19,11 @@ class Database {
     
     public $pdo = null;
     public $db;   // handle of the db connexion    
-     private static $dns = "mysql:host=localhost;dbname=ahorcado"; 
-     private static $user = "root"; 
-     private static $pass = "";    
-    //  private static $user = "andreacordon"; 
-    //  private static $pass = "N2l@7nu1";     
+     private static $dns = "mysql:host=localhost;dbname=andreacordon"; 
+    //  private static $user = "root"; 
+    //  private static $pass = "";    
+     private static $user = "andreacordon"; 
+     private static $pass = "N2l@7nu1";     
     private static $instance;
 
     public function __construct ()  {        

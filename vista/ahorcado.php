@@ -12,6 +12,14 @@
     <script src="../controlador/juego.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <style type="text/css">
+        body {
+    background-image: url("images/gato.gif");
+    background-size: 100% 100%;
+    font-family: 'Vollkorn', serif;
+    font-weight: bolder;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
         a {
             background-color: rgb(167, 32, 106);
             color: white;
@@ -43,7 +51,7 @@
  $contra=$_GET['contra'] ?>
     <div class="col-sm-12">
         <a href="../index.html">CERRAR SESIÓN</a> 
-        <a href="opcionesUsuario.php?nombre="<?=$nombre?>&contra=<?=$contra?>">OPCIONES</a>
+        <a href="opcionesUsuario.php?nombre=<?=$nombre?>&contra=<?=$contra?>">OPCIONES</a>
     </div>
     <center>
  <span id='nombre'><?=$nombre?></span>
