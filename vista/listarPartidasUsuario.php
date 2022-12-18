@@ -52,16 +52,16 @@
             border-radius: 10px;
             text-decoration: none;
         }
+   
     </style>
 </head>
 
 <body>
 <?php $usuario= $_GET['nombre'] ?>
+<a href="opcionesUsuario.php?nombre="<?=$usuario?>">VOLVER</a>
+<span>Usuario:</span> <span id="usuario"><?=$usuario?></span>  
 
-<div>Usuario:</div> <span id="usuario"><?=$usuario?></span>  
-
-        <a href="opcionesUsuario.php?nombre="<?=$usuario?>">VOLVER</a>
-        <h1>PARTIDAS USUARIO: <?php $usuario?> </h1>
+        <h1>PARTIDAS USUARIO: <?=$usuario?> </h1>
         <div id="contenido">
   
     </div>

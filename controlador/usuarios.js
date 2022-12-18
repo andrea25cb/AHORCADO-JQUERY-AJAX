@@ -95,8 +95,6 @@ $(document).ready(function() {
     });
 
     $('#aceptar').on('click', function() {
-        console.log('holaaaaa');
-
         $('#aceptar').css('display', 'none');
 
         $.ajax({

@@ -47,7 +47,7 @@ $(document).ready(function() {
             success: function(datos) {
                 if (datos.nombre != $('#nombre').val() && datos.contra != $('#contra').val()) {
                     $('#mensaje').html("USUARIO O CONTRASEÑA INCORRECTO");
-                } else if ($('#nombre').val() == empty || $('#contra').val() == empty)
+                } else if ($('#nombre').val() == null || $('#contra').val() == null)
                     $('#mensaje').html("DEBE RELLENAR TODOS LOS CAMPOS");
             },
             error: function(xhr, status) {

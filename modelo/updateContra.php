@@ -1,9 +1,9 @@
 <?php
 
 include('database.php');
-$contra=$_GET['contra'];//pasar desde login...
+$contra=$_GET['contra'];
 
-$nuevaContra=$_GET['nuevaContra'];//no la cogeee
+$nuevaContra=$_GET['nuevaContra'];//no la coge:(
 
 $query = "UPDATE usuario SET contra='$nuevaContra' WHERE contra='$contra'";
 $result = $mysqli->query($query);

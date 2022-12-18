@@ -21,7 +21,10 @@
             border-radius: 10px;
             text-decoration: none;
         }
-        
+        #resolver,
+        #respuesta,
+        #nombre,
+        #puntos,
         #imagen,
         #reiniciar,
         #start,
@@ -29,61 +32,50 @@
         #vidas {
             display: none;
         }
+ 
         
-        #imagen {
-            margin-left: 20px;
-        }
-        
-        #sel_cat {
-            font-family: 'Vollkorn', serif;
-            position: center;
-            margin-bottom: 25px;
-            outline: none;
-            border: none;
-            padding: 1rem 1.5rem;
-            border-radius: 2rem;
-            background-color: #b92878;
-            color: #ffffff;
-            font-size: 2rem;
-            cursor: pointer;
-            margin-left: 4%;
-        }
+      
     </style>
 </head>
 
 <body>
+<?php $nombre = $_GET['nombre'];
+ $contra=$_GET['contra'] ?>
     <div class="col-sm-12">
-        <a href="opcionesAdmin.html">VOLVER</a>
+        <a href="../index.html">CERRAR SESIÓN</a> 
+        <a href="opcionesUsuario.php?nombre="<?=$nombre?>&contra=<?=$contra?>">OPCIONES</a>
     </div>
     <center>
-        <div id="vidas">VIDAS: 6</div> <img id="imagen" alt="" width="200x">
+ <span id='nombre'><?=$nombre?></span>
+        <img id="imagen" alt="" width="200x">
+        <div id="vidas">VIDAS: 6  </div>  <div id="puntos"> PUNTOS: 0</div><input type="button" id="resolver" value="RESOLVER"><input type="text" id="respuesta" placeholder="chorizo">
         <h1>
             <span id="title">
             MIAURCADO
         </span>
             <div id="palabra"></div>
         </h1>
-        <span id="puntos"></span>
-        <input id="reiniciar" type="submit" value=""><br>
-
+        <input id="reiniciar" type="submit" onclick="reiniciar()">
         <span id="mensaje"></span>
         <div id="ganapierde"></div>
+        <!-- <input id="reiniciar" type="submit" onclick="reiniciar()"><br> -->
+
         <div id="palabraRandom"></div>
         <div id="le">
             <span id="letras"></span>
         </div>
 
         <div class="login-form">
-            <!-- <h1>ELIGE UNA CATEGORIA</h1> -->
             <select id="sel_cat">
             <!-- <option value="0" disabled selected>Seleccione su categoría</option> -->
         </select>
 
         </div>
-        <input id="start" type="submit" value="PLAY"><br>
+        <input id="start" type="submit" value="PLAY" onclick="start()"><br>
 
         <input id="resolver" type="button" value="QUIERO RESOLVER!"><br>
     </center>
+    <!-- </div> -->
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    muestraCategorias(); //se muestra al cargar la pagina
-    var palabras;
+    // muestraCategorias(); //se muestra al cargar la pagina
+
     var vidas = 6;
     var fallos = 1; //se van sumando
     var aciertos = 0; //se van sumando
@@ -18,7 +18,7 @@ $(document).ready(function() {
             catSeleccionada = $(this).val();
             $.get("../modelo/palabraRandom.php", { catSeleccionada }, function(data) {
                 var palabramal = data;
-                palabras = palabramal.slice(1, -1)
+                var palabras = palabramal.slice(1, -1)
                 $("#palabraRandom").html(palabras);
                 $('#start').fadeIn(1000);
             });
@@ -229,5 +229,24 @@ $(document).ready(function() {
         }
     }
 
+    function guardarPartida() {
+        $.ajax({
+            url: 'guardarPartida.php',
+            type: 'POST',
+            dataType: 'text',
+            data: {
+                usuario_id: idUsuario,
+                palabra: palabraGuardada,
+                puntuacion: puntuacion,
+            },
+            success: function(datos) {},
+            error: function(xhr, status) {
+                alert('Disculpe, existiÃ³ un problema');
+            },
+            complete: function(xhr, status) {
+
+            }
+        })
+    };
 
 });

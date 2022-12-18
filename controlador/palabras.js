@@ -2,6 +2,7 @@ $(document).ready(function() {
     var orden = 'id';
     var dir = 'ASC';
     muestraPalabras(orden);
+    selectCategorias();
 
     $('#contenido').on('click', 'th:not("#acciones")', function() {
         elemento = $(this).text();
@@ -14,20 +15,21 @@ $(document).ready(function() {
         }
     });
 
-    $('#insertar').click(function() {
+    $('#insertarPalabra').click(function() {
         $.ajax({
             url: '../modelo/insertarPalabra.php',
             type: 'POST',
             dataType: 'text',
             data: {
                 palabra: $('#palabra').val(),
-                categoria: $('#categoria').val(),
+                seleccion: $('#seleccion').val(),
             },
             success: function(datos) {
-                if ($('#palabra').val() == null || $('#categoria').val() == null) {
-                    $('#mensaje').html("DEBE RELLENAR TODOS LOS CAMPOS");
+                if ($('#palabra').val() == null || $('#seleccion').val() == null) {
+                    $('#mensaje').html('No puede estar vacio');
+
                 } else {
-                    fila = '<tr><td>id</td><td>' + $('#palabra').val() + '</td><td>' + $('#categoria').val() + '</td><td><button class="borrar"' + '>Borrar</button></td><td><button class="modificar"' + '>Modificar</button></td></tr>';
+                    fila = '<tr><td>id</td><td>' + $('#palabra').val() + '</td><td>' + $('#seleccion').val() + '</td><td><button class="borrar"' + '>Borrar</button></td><td><button class="modificar"' + '>Modificar</button></td></tr>';
 
                 }
             },
@@ -40,6 +42,53 @@ $(document).ready(function() {
             }
         });
     });
+
+    $('#insertarCategoria').click(function() {
+        $.ajax({
+            url: '../modelo/insertarCategoria.php',
+            type: 'POST',
+            dataType: 'text',
+            data: {
+                categoria: $('#categoria').val(),
+                primeraPalabra: $('#primeraPalabra').val(),
+            },
+            success: function(datos) {
+                if ($('#categoria').val() == null || $('#primeraPalabra').val() == null) {
+                    $('#mensaje').html('No puede estar vacio');
+                }
+            },
+            error: function(xhr, status) {
+                alert('Disculpe, existió un problema');
+
+            },
+            complete: function(xhr, status) {
+                //alert('Petición realizada');
+            }
+        });
+    });
+
+
+
+    function selectCategorias() {
+        $.ajax({
+            url: '../modelo/dameCategorias.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function(datos) {
+
+                $.each(datos, function(idx, elemento) {
+                    select = '<option>' + elemento.categoria + '</option>';
+                    $('#seleccion').append(select);
+                });
+            },
+            error: function(xhr, status) {
+                alert('error');
+            },
+            complete: function(xhr, status) {
+                //alert('PeticiÃ³n realizada');
+            }
+        });
+    }
 
     $('#contenido').on('click', '.borrar', function() {
         var id = $(this).parent().siblings().eq(0).html();
@@ -65,20 +114,18 @@ $(document).ready(function() {
     $('#contenido').on('click', '.modificar', function() {
         id = $(this).parent().siblings().eq(0).html();
         let palabra = $(this).parent().siblings().eq(1).html();
-        let categoria = $(this).parent().siblings().eq(2).html();
+        let seleccion = $(this).parent().siblings().eq(2).html();
 
         $('#palabra').val(palabra);
-        $('#categoria').val(categoria);
+        $('#seleccion').val(seleccion);
 
         console.log(id);
         console.log(palabra);
-        console.log(categoria);
+        console.log(seleccion);
         $('#aceptar').css('display', 'initial');
     });
 
     $('#aceptar').on('click', function() {
-        console.log('holaaaaa');
-
         $('#aceptar').css('display', 'none');
 
         $.ajax({
@@ -87,11 +134,11 @@ $(document).ready(function() {
             dataType: 'text',
             data: {
                 palabra: $('#palabra').val(),
-                categoria: $('#categoria').val(),
+                seleccion: $('#seleccion').val(),
             },
             success: function(datos) {
                 $('#palabra').val();
-                $('#categoria').val();
+                $('#seleccion').val();
 
                 muestraPalabras(orden);
             },

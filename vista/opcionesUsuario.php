@@ -92,6 +92,9 @@
             border-radius: 10px;
             text-decoration: none;
         }
+        #c{
+            display: none;
+        }
     </style>
 </head>
 
@@ -103,11 +106,10 @@
     <div class="login-form">
         <center>
             <h2>
-                OPCIONES USUARIO
+                OPCIONES <span id="usuario"><?=$usuario?>
             </h2>
         </center><br><br>
-        <div>Usuario:</div> <span id="usuario"><?=$usuario?></span>  
-        <div>Contra:</div> <span id="contra"><?=$contra?></span>  
+        <div id="c">Contra:<span id="contra"><?=$contra?></span></div>
         
         <form method="get" class="form-horizontal">
             <div class="form-group">

@@ -2,7 +2,7 @@
 include('database.php');
 
 $palabra = $_POST['palabra'];
-$categoria = $_POST['categoria'];
+$categoria = $_POST['seleccion'];
 if($palabra ==null || $categoria ==null){
     echo "no puede estar vacio";
 } else {

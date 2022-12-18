@@ -8,7 +8,6 @@
     <title>CAMBIAR CONTRASEÑA</title>
     <script src="../jquery-3.6.1.js"></script>
     <script src="../controlador/verContra.js"></script>
-    <script src="../controlador/cambiarContra.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <style type="text/css">
         * {
@@ -89,15 +88,18 @@
             border-radius: 10px;
             text-decoration: none;
         }
+
+        #c{
+            display: none;
+        }
     </style>
 </head>
 
 <body>
 <?php 
-// $usuario = $_GET['nombre'];
+
 $contra = $_GET['contra'];
     ?>
-<!-- <div>Usuario:</div> <span id="usuario"><?=$usuario?></span>   -->
 
     <div class="login-form">
         <center>
@@ -105,7 +107,7 @@ $contra = $_GET['contra'];
                 CAMBIAR CONTRASEÑA
             </h2>
         </center>
-
+<div id="c"><span id="contra"><?=$contra?></span></div>
             <div class="form-group">
                 <label class="col-sm-6 text-left">Contraseña actual:</label>
                 <div class="col-sm-12">
@@ -124,7 +126,7 @@ $contra = $_GET['contra'];
 
             <div class="form-group">
                 <div class="col-sm-12">
-                    <input type="submit" id="cambiarContra" value="CAMBIAR CONTRASEÑA!">
+                    <input type="submit" id="cambiarContra" value="CAMBIAR CONTRASEÑA">
                 </div>
             </div><br>
             <div class="form-group">
